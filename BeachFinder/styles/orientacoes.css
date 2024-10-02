@@ -1,0 +1,80 @@
+
+.titulo {
+    margin-bottom: 30px; 
+    font-size: 1.563rem; 
+    color: #000000; 
+    text-align: center;
+}
+
+
+.tips-container {
+    display: flex;
+    justify-content: space-between; 
+    flex-wrap: wrap; 
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.descricao {
+    grid-column: span 4; 
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.tip {
+    flex: 1 1 30%; 
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    transition: box-shadow 0.3s;
+}
+
+.tip:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tip h3 {
+    font-size: 1.25em;
+    color: #b91111;
+    margin-bottom: 8px;
+}
+
+.tip p {
+    font-size: 1em;
+    color: #333;
+}
+
+@media (max-width: 1200px) {
+    #dishes {
+        grid-template-columns: repeat(3, 1fr); 
+    }
+}
+
+@media (max-width: 800px) {
+    #dishes {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@media (max-width: 500px) {
+    #dishes {
+        grid-template-columns: 1fr; 
+    }
+
+    .titulo {
+        font-size: 1.8em; 
+    }
+
+    .descricao {
+        font-size: 1em; 
+}
+}
