@@ -1,3 +1,33 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const pwShowHide = document.querySelectorAll(".showHidePw");  // Todos os ícones
+  const pwFields = document.querySelectorAll(".password");  // Todos os campos de senha
+
+  // Alternar visibilidade da senha
+  pwShowHide.forEach((eyeIcon, index) => {
+    eyeIcon.addEventListener("click", () => {
+      // Obter o campo de senha correspondente ao ícone clicado
+      const pwField = pwFields[index];
+
+      // Verificar se o campo de senha é do tipo "password" ou "text"
+      if (pwField.type === "password") {
+        pwField.type = "text";  // Exibe a senha
+
+        // Muda o ícone para "mostrar"
+        eyeIcon.classList.replace("uil-eye-slash", "uil-eye");
+      } else {
+        pwField.type = "password";  // Oculta a senha
+
+        // Muda o ícone para "ocultar"
+        eyeIcon.classList.replace("uil-eye", "uil-eye-slash");
+      }
+    });
+  });
+});
+
+
+
+
+
 $(document).ready(function() {
     $('#mobile_btn').on('click', function () {
         $('#mobile_menu').toggleClass('active');
@@ -34,5 +64,3 @@ $(window).on('scroll', function () {
     navItems.removeClass('active');
     $(navItems[activeSectionIndex]).addClass('active');
 });
-
-
