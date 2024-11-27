@@ -1,47 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- ===== Iconscout CSS ===== -->
   <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
-  <!-- ===== CSS ===== -->
   <link rel="stylesheet" href="styles/login.css" />
-  <title>Signup Form</title>
+  <title>Cadastro Formulário</title>
 </head>
 <body>
   <div class="container">
     <div class="form signup">
       <span class="title">Cadastro</span>
-      <form action="#">
+      <form id="formCadastro" action="http://localhost:3000/bombeiros" method="POST">
         <div class="input-field">
-          <input type="text" placeholder="Digite seu nome" required />
+          <input type="text" name="nome" placeholder="Digite seu nome" required />
           <i class="uil uil-user"></i>
         </div>
         <div class="input-field">
-          <input type="text" placeholder="Digite seu email" required />
+          <input type="email" name="email" placeholder="Digite seu email" required />
           <i class="uil uil-envelope icon"></i>
         </div>
         <div class="input-field">
-          <input type="password" class="password" placeholder="Crie uma senha" required />
+          <input type="password" name="senha" placeholder="Crie uma senha" required />
           <i class="uil uil-lock icon"></i>
-          <i class="uil uil-eye-slash showHidePw"></i>
         </div>
         <div class="input-field">
-          <input type="password" class="password" placeholder="Digite seu RE ou CBPMESP" required />
+          <input type="number" name="re" placeholder="Digite seu CNBC" required />
           <i class="uil uil-user-check icon"></i>
-          
         </div>
         <div class="checkbox-text">
           <div class="checkbox-content">
-            <input type="checkbox" id="termCon" />
-            <label for="termCon" class="text">
-              Aceito todos os termos e condições</label>
+            <input type="checkbox" id="termCon" required />
+            <label for="termCon" class="text">Aceito todos os termos e condições</label>
           </div>
         </div>
         <div class="input-field button">
-          <input type="button" value="Cadastrar" />
+          <input type="submit" value="Cadastrar" />
         </div>
       </form>
       <div class="login-signup">

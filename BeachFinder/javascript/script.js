@@ -1,66 +1,76 @@
 document.addEventListener("DOMContentLoaded", () => {
   const pwShowHide = document.querySelectorAll(".showHidePw");  // Todos os ícones
-  const pwFields = document.querySelectorAll(".password");  // Todos os campos de senha
-
-  // Alternar visibilidade da senha
+  const pwFields = document.querySelectorAll(".password"); 
+  
   pwShowHide.forEach((eyeIcon, index) => {
     eyeIcon.addEventListener("click", () => {
-      // Obter o campo de senha correspondente ao ícone clicado
       const pwField = pwFields[index];
-
-      // Verificar se o campo de senha é do tipo "password" ou "text"
       if (pwField.type === "password") {
         pwField.type = "text";  // Exibe a senha
-
-        // Muda o ícone para "mostrar"
         eyeIcon.classList.replace("uil-eye-slash", "uil-eye");
       } else {
         pwField.type = "password";  // Oculta a senha
-
-        // Muda o ícone para "ocultar"
         eyeIcon.classList.replace("uil-eye", "uil-eye-slash");
       }
     });
   });
 });
 
+// Função para cadastro
+document.getElementById('formCadastro').addEventListener('submit', async function(e) {
+  e.preventDefault(); // Previne o envio tradicional do formulário
 
+  const nome = document.querySelector('input[placeholder="Digite seu nome"]').value;
+  const email = document.querySelector('input[placeholder="Digite seu email"]').value;
+  const senha = document.querySelector('input[placeholder="Crie uma senha"]').value;
+  const re = document.querySelector('input[placeholder="Digite seu CNBC"]').value;
 
+  const dados = { nome, email, senha, re };
 
-
-$(document).ready(function() {
-    $('#mobile_btn').on('click', function () {
-        $('#mobile_menu').toggleClass('active');
-        $('#mobile_btn').find('i').toggleClass('fa-x');
+  try {
+    const response = await fetch('http://localhost:3000/bombeiros', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dados),
     });
-});
 
-const sections = $('section');
-const navItems = $('.nav-item');
-
-$(window).on('scroll', function () {
-    const header = $('header');
-    const scrollPosition = $(window).scrollTop() - header.outerHeight();
-
-    let activeSectionIndex = 0;
-
-    if (scrollPosition <= 0) {
-        header.css('box-shadow', 'none');
+    if (response.status === 201) {
+      // Salva o nome do bombeiro no localStorage
+      localStorage.setItem('nomeBombeiro', nome);
+      // Redireciona para a página de boas-vindas
+      window.location.href = 'bem-vindo.html';
     } else {
-        header.css('box-shadow', '5px 1px 5px rgba(0, 0, 0, 0.1');
+      alert('Erro ao cadastrar bombeiro');
     }
-
-    sections.each(function(i) {
-        const section = $(this);
-        const sectionTop = section.offset().top - 200;
-        const sectionBottom = sectionTop+ section.outerHeight();
-
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-            activeSectionIndex = i;
-            return false;
-        }
-    })
-
-    navItems.removeClass('active');
-    $(navItems[activeSectionIndex]).addClass('active');
+  } catch (error) {
+    alert("Erro ao enviar os dados: " + error.message);
+  }
 });
+
+// Função para login
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+
+  const email = document.getElementById('email').value;
+  const senha = document.getElementById('senha').value;
+
+  const response = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, senha }),
+  });
+
+  if (response.status === 200) {
+      const { nome } = await response.json();
+      localStorage.setItem('nomeBombeiro', nome); // Armazena o nome no localStorage
+      window.location.href = '/bem-vindo.html'; // Redireciona para a página de boas-vindas
+  } else {
+      alert('Erro ao fazer login');
+  }
+});
+
+
