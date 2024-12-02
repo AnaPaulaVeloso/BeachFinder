@@ -6,6 +6,7 @@ import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import multer from 'multer';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,20 +19,40 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configuração mais restritiva para Live Server
-app.use(cors({
-  origin: 'http://127.0.0.1:5500', // Permitir apenas o Live Server
-  methods: ['GET', 'POST'],        // Métodos permitidos
-}));
+app.use(
+  cors({
+    origin: 'http://127.0.0.1:5500', // Permitir apenas o Live Server
+    methods: ['GET', 'POST'], // Métodos permitidos
+  })
+);
 
-// Servir arquivos estáticos da pasta "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Função para inicializar o banco de dados e criar tabelas
+
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir);
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Define o local de armazenamento
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + '-' + file.originalname); // Define um nome único para o arquivo
+  },
+});
+
+const upload = multer({ storage });
+
+
 const initDB = async () => {
   const db = await open({
     filename: './banco.db',
     driver: sqlite3.Database,
   });
+
+  
 
   // Criar tabela bombeiros (caso não exista)
   await db.run(`
@@ -44,13 +65,56 @@ const initDB = async () => {
     )
   `);
 
-  console.log('Tabela de bombeiros criada/verificada.');
+  // Criar tabela para cadastro de crianças desaparecidas (caso não exista)
+  await db.run(`
+    CREATE TABLE IF NOT EXISTS crianças_desaparecidas (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      nome_crianca TEXT NOT NULL,
+      nome_responsavel TEXT NOT NULL,
+      telefone_responsavel TEXT NOT NULL,
+      descricao TEXT NOT NULL,
+      foto TEXT
+    )
+  `);
+
+  console.log('Tabelas verificadas e prontas.');
   return db;
 };
 
 // Endpoint inicial
 app.get('/', (req, res) => {
   res.send('Servidor funcionando!');
+});
+
+// Endpoint para cadastrar crianças desaparecidas
+app.post('/cadastro-crianca', upload.single('foto'), async (req, res) => {
+  try {
+    console.log('Recebendo dados da criança:', req.body, req.file); // Log para depuração
+
+    const { nome_crianca, nome_responsavel, telefone_responsavel, descricao } = req.body;
+    const foto = req.file ? req.file.filename : null; // Nome do arquivo enviado
+
+    // Validação de campos obrigatórios
+    if (!nome_crianca || !nome_responsavel || !telefone_responsavel || !descricao) {
+      return res.status(400).send('Todos os campos (exceto a foto) são obrigatórios.');
+    }
+
+    const db = await open({
+      filename: './banco.db',
+      driver: sqlite3.Database,
+    });
+
+    // Inserir dados no banco de dados
+    await db.run(
+      'INSERT INTO crianças_desaparecidas (nome_crianca, nome_responsavel, telefone_responsavel, descricao, foto) VALUES (?, ?, ?, ?, ?)',
+      [nome_crianca, nome_responsavel, telefone_responsavel, descricao, foto]
+    );
+
+    res.status(201).send('Cadastro de criança realizado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao cadastrar criança:', error);
+    res.status(500).send('Erro ao cadastrar criança.');
+  }
 });
 
 // Endpoint para cadastrar bombeiros
@@ -119,3 +183,4 @@ app.listen(PORT, async () => {
   console.log(`Servidor rodando na porta ${PORT}`);
   await initDB();
 });
+

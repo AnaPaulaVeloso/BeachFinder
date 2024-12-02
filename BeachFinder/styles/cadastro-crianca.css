@@ -7,14 +7,22 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
 body {
-    height: 100vh;
+    min-height: 100vh; 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background-color: #e4e4e4;
     padding: 10px;
+    overflow-y: auto; 
+}
+
+
+.container-wrapper {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
 }
 
 .container {
@@ -26,6 +34,8 @@ body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     padding: 30px;
+    flex: 1; /* Permite que o formulário ocupe mais espaço conforme necessário */
+    min-width: 300px; /* Garante que o formulário não encolha demais */
 }
 
 h1 {
@@ -100,22 +110,24 @@ h1::before {
     width: 100%;
 }
 
-.button{
-  margin-top: 30px;
+.button {
+    margin-top: 30px;
 }
 
 .button input {
-  border: none;
-  color: #fff;
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  border-radius: 6px;
-  background-color: #4070f4;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 12px 0;
-  width: 100%;
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.info-text {
+    max-width: 250px;
+    font-size: 14px;
+    color: #555;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    flex: 1; 
 }
 
 .optional {
@@ -123,7 +135,13 @@ h1::before {
     color: #888;
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
+    .container-wrapper {
+        flex-direction: column; 
+        align-items: center;
+    }
+
     .container {
         max-width: 100%;
         margin: 0 10px;
@@ -140,6 +158,12 @@ h1::before {
 
     .button input {
         font-size: 14px;
+    }
+
+    .info-text {
+        max-width: 100%;
+        margin-top: 20px; 
+        text-align: center; 
     }
 }
 

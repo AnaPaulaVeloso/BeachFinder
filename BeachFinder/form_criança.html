@@ -5,45 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro de Criança Desaparecida</title>
   <link rel="stylesheet" href="styles/cadastro-crianca.css" />
-</head>
+
+</head>   
 <body>
-  <div class="container">
-    <h1>Dados da criança</h1>  
-    <form id="formCadastroCrianca" action="http://localhost:3000/cadastro-crianca" method="POST" enctype="multipart/form-data">
-      
+  <div class="container-wrapper">
+    <!-- Formulário -->
+    <div class="container">
+      <h1>Dados da Criança</h1>
+      <form
+        id="formCadastroCrianca"
+        action="http://localhost:3000/cadastro-crianca"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="exibirAlerta(event)"
+      >
         <div class="form-group">
           <label for="nomeCrianca">Nome da Criança:</label>
-          <input type="text" id="nomeCrianca" name="nome_crianca" placeholder="Digite o nome da criança" required />
+          <input
+            type="text"
+            id="nomeCrianca"
+            name="nome_crianca"
+            placeholder="Digite o nome da criança"
+            required
+          />
         </div>
-      
+
         <div class="form-group">
           <label for="nomeResponsavel">Nome do Responsável:</label>
-          <input type="text" id="nomeResponsavel" name="nome_responsavel" placeholder="Digite o nome do responsável" required />
+          <input
+            type="text"
+            id="nomeResponsavel"
+            name="nome_responsavel"
+            placeholder="Digite o nome do responsável"
+            required
+          />
         </div>
-      
+
         <div class="form-group">
           <label for="telefoneResponsavel">Telefone do Responsável:</label>
-          <input type="tel" id="telefoneResponsavel" name="telefone_responsavel" placeholder="Digite o telefone" required />
+          <input
+            type="tel"
+            id="telefoneResponsavel"
+            name="telefone_responsavel"
+            placeholder="Digite o telefone"
+            required
+          />
         </div>
-      
+
         <div class="form-group">
           <label for="descricaoCrianca">Descrição da Criança:</label>
-          <textarea id="descricaoCrianca" name="descricao" placeholder="Ex.: altura, cor da roupa, marca de nascença..." required></textarea>
+          <textarea
+            id="descricaoCrianca"
+            name="descricao"
+            placeholder="Ex.: altura, cor da roupa, marca de nascença..."
+            required
+          ></textarea>
         </div>
-      
+
         <div class="form-group">
           <label for="fotoCrianca">Foto da Criança (opcional):</label>
-          <input type="file" id="fotoCrianca" name="foto" accept="image/*" />
+          <input
+            type="file"
+            id="fotoCrianca"
+            name="foto"
+            accept="image/*"
+          />
         </div>
- 
 
-      <div class="form-group">
-      <div class="input-field button">
-        <input type="submit" value="Cadastrar" />
-      </div>
-      </div>
-    </form>
+        <div class="button">
+          <input type="submit" value="Cadastrar" />
+        </div>
+      </form>
+    </div>
+
+    <!-- Alerta para os pais -->
+    <div class="info-text">
+      <p>
+        Atenção: O responsável só poderá retirar a criança do posto mediante
+        apresentação de documentos oficiais de identificação tanto do responsável quanto
+        da criança.
+      </p>
+    </div>
   </div>
-  <script src="script/cadastro-crianca.js"></script>
+
+  <script>
+    function exibirAlerta(event) {
+      event.preventDefault(); // Previne o envio do formulário para exibição do alerta
+      alert(
+        "Cadastro realizado com sucesso! Aguarde o retorno da equipe de resgate."
+      );
+      document.getElementById("formCadastroCrianca").submit(); 
+    }
+  </script>
 </body>
 </html>
