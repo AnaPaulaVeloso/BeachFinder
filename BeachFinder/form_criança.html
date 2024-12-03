@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -89,13 +89,12 @@
   </div>
 
   <script>
-    function exibirAlerta(event) {
-      event.preventDefault(); // Previne o envio do formulário para exibição do alerta
-      alert(
-        "Cadastro realizado com sucesso! Aguarde o retorno da equipe de resgate."
-      );
-      document.getElementById("formCadastroCrianca").submit(); 
-    }
+function exibirAlerta(event) {
+  event.preventDefault();
+  alert("Cadastro realizado com sucesso! Você será redirecionado para a página inicial.");
+  window.location.href = "home.html"; // Redireciona após o alerta
+}
+
   </script>
 </body>
 </html>

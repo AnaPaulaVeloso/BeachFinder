@@ -15,16 +15,18 @@
     max-width: 300px;
 }
 
-
-
-.dish-rate i {
-    color: var(--color-primary-6);
+.dish iframe {
+    width: 100%; 
+    height: 200px; 
+    max-width: 100%;
+    border: none; 
 }
 
-.dish-price {
+
+.dish-posto {
     display: flex;
     align-items: center;
-    gap: 140px;
+    gap: 190px;
 }
 
 .dish-location{
