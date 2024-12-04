@@ -202,6 +202,25 @@ app.post('/cadastro-crianca-desaparecida', upload.single('foto'), async (req, re
   }
 });
 
+// Endpoint para listar as crianças desaparecidas
+app.get('/criancas-desaparecidas', async (req, res) => {
+  try {
+    const db = await open({
+      filename: './banco.db',
+      driver: sqlite3.Database,
+    });
+
+    // Consulta para obter todas as crianças desaparecidas
+    const criancas = await db.all('SELECT * FROM crianças_desaparecidas');
+
+    res.status(200).json(criancas); // Retorna a lista de crianças em formato JSON
+  } catch (error) {
+    console.error('Erro ao listar crianças desaparecidas:', error);
+    res.status(500).send('Erro ao listar crianças desaparecidas.');
+  }
+});
+
+
 // Inicializar servidor
 const PORT = 3000;
 app.listen(PORT, async () => {

@@ -3,56 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Bombeiros</title>
-  <link rel="stylesheet" href="styles/style.css">
-  <style>
-    .card {
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 10px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      display: inline-block;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    .card img {
-      border-radius: 8px;
-      width: 100%;
-      height: auto;
-    }
-
-    .card h2 {
-      font-size: 1.2rem;
-      margin: 10px 0;
-    }
-
-    .card p {
-      font-size: 1rem;
-      margin: 5px 0;
-    }
-
-    .cards-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-
-    
-    }
-  </style>
+  <title>Tela Bombeiros</title>
+  <link rel="stylesheet" href="styles/telaBombeiro.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 </head>
 <body>
   <header>
     <nav id="navbar">
-      <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
-      <button class="btn-default" onclick="logout()">Sair</button>
+        <!-- Logo -->
+        <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
+        
+        <!-- Botão de Sair -->
+        <div id="cta_buttons">
+            <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
+                Sair
+            </button>
+        </div>
     </nav>
   </header>
+
   <main>
-    <h2>Crianças Desaparecidas Cadastradas</h2>
+    <h2>Crianças Desaparecidas</h2>
     <div id="tabelaCrianca" class="cards-container">
       <!-- Os cards serão gerados aqui -->
     </div>
@@ -77,24 +48,17 @@
             <p><strong>Responsável:</strong> ${crianca.nome_responsavel}</p>
             <p><strong>Telefone:</strong> ${crianca.telefone_responsavel}</p>
             <p><strong>Descrição:</strong> ${crianca.descricao}</p>
-            ${
-              crianca.foto
-                ? `<img src="http://localhost:3000/uploads/${criança.foto}" alt="Foto da Criança" />`
-                : '<p><strong>Foto não disponível</strong></p>'
-            }
+            ${crianca.foto 
+              ? `<img src="http://localhost:3000/uploads/${crianca.foto}" alt="Foto da Criança" class="foto-crianca" />` 
+              : '<p><strong>Foto não disponível</strong></p>'}
           `;
           container.appendChild(card);
         });
+
       } catch (error) {
         console.error('Erro ao carregar crianças:', error);
         alert('Erro ao carregar crianças desaparecidas.');
       }
-    }
-
-    // Função de logout (opcional)
-    function logout() {
-      alert('Sessão encerrada.');
-      window.location.href = 'login_bombeiro.html'; 
     }
 
     // Chama a função ao carregar a página
