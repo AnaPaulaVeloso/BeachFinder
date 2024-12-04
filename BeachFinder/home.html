@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-crossorigin="anonymous" referrerpolicy="no-referrer" />
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="styles/style.css">
 <link rel="stylesheet" href="styles/style.css">
@@ -13,11 +13,34 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <head>
+
 <body>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+        }
+        .container {
+          margin-bottom: 30px;
+        }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+        th, td {
+          border: 1px solid #ccc;
+          padding: 10px;
+          text-align: left;
+        }
+        th {
+          background-color: #f4f4f4;
+        }
+      </style>
     <header>
         <nav id="navbar">
             <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
@@ -34,9 +57,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 </li>
             </ul>
 
-            <button class="btn-default">
-                Entrar
-            </button>
+            <div id="cta_buttons">
+                <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
+                    Entrar
+                </button>
+            </div>
+            </div>
 
             <button id="mobile_btn">
                 <i class="fa-solid fa-bars"></i>
@@ -54,14 +80,8 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <li class="nav-item">
                 <a href="#orien">Orientações</a>
             </li>
-
             </ul>
 
-            <button class="btn-default" onclick="href='login_bomneiro.html'">
-                Entrar
-            </button>
-            
-                    
         </div>
     </header>
 
@@ -70,7 +90,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <div class="shape"></div>
             <div id="cta">
                 <h1 class="title">
-                    Beach<span>Finder</span>
+                    SOS<span>Kids</span>
                 </h1>
 
                 <p class="description">
@@ -79,24 +99,38 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 </p>
 
                 <div id="cta_buttons">
-                    <a href="#" class="btn-default">
+                    <a href="#posto" class="btn-default">
                         Ver Postos
                     </a>
-
-                    <a href="tel:+55555555555" id="phone_button">
+                
+<a href="tel:+55555555555" id="phone_button" style="color: black">
                         <button class="btn-default">
                             <i class="fa-solid fa-phone"></i>
                         </button>
                         (13) 3494-3090
                     </a>
-                </div>
-
-                <!-- image -->
+                
+                
+                    
+                <div class="container">
+                    <h1>Crianças Encontradas</h1>
+                    <table id="tabelaCrianças">
+                      <thead>
+                        <tr>
+                          <th>Nome</th>
+                          <th>Descrição</th>
+                          <th>Local Encontrado</th>
+                          <th>Posto</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- Os dados serão inseridos aqui via JavaScript -->
+                      </tbody>
+                    </table>
+                  </div>
 
 
         </section>
-
-        
         <section id="posto">
             <h2 class="section-title">Postos de Praia Grande</h2>
 
@@ -104,10 +138,10 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <div class="dish">
                     <div class="dish-location">
                     </div>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                        allowfullscreen 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </iframe>
                     <h3 class="dish-title">
                         Canto do Forte
@@ -128,13 +162,13 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     <div class="dish-location">
                     </div>
 
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                    allowfullscreen 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
-                        Guilhermina 
+                        Guilhermina
                     </h3>
                     <span class="dish-description">
                         Av. Presidente Kennedy, 2641
@@ -147,167 +181,186 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                     </div>
                 </div>
 
-                        <div class="dish">
-                            <div class="dish-location">    
-                            </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                            <h3 class="dish-title">
-                                Aviação
-                            </h3>
+                    <h3 class="dish-title">
+                        Aviação
+                    </h3>
 
-                            <span class="dish-description">
-                                Av. Presidente Kennedy, 3901
-                            </span>
-                            <div class="dish-posto">
-                                <h4>Posto 4</h4>
-                                <button class="btn-default">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-                        </div>
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 3901
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 4</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
 
-                            <div class="dish">
-                                <div class="dish-location">
-                                </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                                <h3 class="dish-title">
-                                    Tupi
-                                </h3>
+                    <h3 class="dish-title">
+                        Tupi
+                    </h3>
 
-                                <span class="dish-description">
-                                    Av. Presidente Kennedy, 5775
-                                </span>
-                                <div class="dish-posto">
-                                    <h4>Posto 5</h4>
-                                    <button class="btn-default">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 5775
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 5</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
 
-                            <div class="dish">
-                                <div class="dish-location">
-                                </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 
-                                <h3 class="dish-title">
-                                    Ocian
-                                </h3>
+                    <h3 class="dish-title">
+                        Ocian
+                    </h3>
 
-                                <span class="dish-description">
-                                    Av. Presidente Kennedy, 7557
-                                </span>
-                                <div class="dish-posto">
-                                    <h4>Posto 7</h4>
-                                    <button class="btn-default">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 7557
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 7</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
 
-                            <div class="dish">
-                                <div class="dish-location">
-                                </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                                <h3 class="dish-title">
-                                    Mirim
-                                </h3>
+                    <h3 class="dish-title">
+                        Mirim
+                    </h3>
 
-                                <span class="dish-description">
-                                    Av. Presidente Kennedy, 9661
-                                </span>
-                                <div class="dish-posto">
-                                    <h4>Posto 9</h4>
-                                    <button class="btn-default">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 9661
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 9</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
 
-                            <div class="dish">
-                                <div class="dish-location">
-                                </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                                <h3 class="dish-title">
-                                    Caiçara
-                                </h3>
+                    <h3 class="dish-title">
+                        Caiçara
+                    </h3>
 
-                                <span class="dish-description">
-                                    Av. Presidente Kennedy, 13291
-                                </span>
-                                <div class="dish-posto">
-                                    <h4>Posto 11</h4>
-                                    <button class="btn-default">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 13291
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 11</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
 
-                            <div class="dish">
-                                <div class="dish-location">
-                                </div>
+                <div class="dish">
+                    <div class="dish-location">
+                    </div>
 
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr" style="border-radius: 10px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
+                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-                                <h3 class="dish-title">
-                                    Balneário Flórida
-                                </h3>
+                    <h3 class="dish-title">
+                        Balneário Flórida
+                    </h3>
 
-                                <span class="dish-description">
-                                    Av. Presidente Kennedy, 17291
-                                </span>
-                                <div class="dish-posto">
-                                    <h4>Posto 14</h4>
-                                    <button class="btn-default">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
-                                </div>
-                            </div>                          
-            </div>            
+                    <span class="dish-description">
+                        Av. Presidente Kennedy, 17291
+                    </span>
+                    <div class="dish-posto">
+                        <h4>Posto 14</h4>
+                        <button class="btn-default">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
     </main>
 
-            <section id="orientações">            
-            <h2 class="titulo">Orientações</h2>
-            <p class="descricao">Siga estas orientações para garantir a segurança e o bem-estar das crianças durante sua visita à praia.</p>
+    <section id="orientações">
+        <h2 class="titulo">Orientações</h2>
+        <p class="descricao">Siga estas orientações para garantir a segurança e o bem-estar das crianças durante sua
+            visita à praia.</p>
         <div id="dishes">
-    
-        <div class="tip">
-            <h3>1. Estabeleça um Ponto de Encontro</h3>
-            <p>Defina um local específico onde todos podem se encontrar caso alguém se perca.</p>
+
+            <div class="tip">
+                <h3>1. Estabeleça um Ponto de Encontro</h3>
+                <p>Defina um local específico onde todos podem se encontrar caso alguém se perca.</p>
+            </div>
+
+            <div class="tip">
+                <h3>2. Use Pulseiras de Identificação</h3>
+                <p>Coloque pulseiras com informações de contato nas crianças para facilitar a identificação.</p>
+            </div>
+
+            <div class="tip">
+                <h3>3. Mantenha uma Supervisão Constante</h3>
+                <p>Fique sempre atento e nunca perca de vista seus filhos enquanto eles brincam.</p>
+            </div>
+
+            <div class="tip">
+                <h3>4. Ensine Sobre Estranhos</h3>
+                <p>Converse com as crianças sobre a importância de não falar com estranhos.</p>
+            </div>
         </div>
-    
-        <div class="tip">
-            <h3>2. Use Pulseiras de Identificação</h3>
-            <p>Coloque pulseiras com informações de contato nas crianças para facilitar a identificação.</p>
-        </div>
-    
-        <div class="tip">
-            <h3>3. Mantenha uma Supervisão Constante</h3>
-            <p>Fique sempre atento e nunca perca de vista seus filhos enquanto eles brincam.</p>
-        </div>
-    
-        <div class="tip">
-            <h3>4. Ensine Sobre Estranhos</h3>
-            <p>Converse com as crianças sobre a importância de não falar com estranhos.</p>
-        </div>
-    </div>
 
     </section>
 
     <footer class="footer-distributed">
 
         <div class="footer-left">
-            <h3>Beach<span>Finder</span></h3>
+            <h3>SOS<span>Kids</span></h3>
 
             <p class="footer-links">
                 <a href="#">Início</a>
@@ -315,12 +368,12 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
                 <a href="#">Postos</a>
                 |
                 <a href="#">Orientações</a>
-                
+
             </p>
 
-            <p class="footer-company-name">Copyright © 2024 <strong>BeachFinder</strong> Todos os direitos reservados</p>
+            <p class="footer-company-name">Copyright © 2024 <strong>SOSKids</strong> Todos os direitos reservados</p>
         </div>
-        
+
 
         <div class="footer-center">
             <div>
@@ -334,7 +387,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
             <p class="footer-company-about">
                 <span>Sobre Nós</span>
                 <strong>CyberFor</strong>
-                somos apaixonados por desenvolver tecnologias que transformam ideias em soluções impactantes, 
+                apaixonados por desenvolver tecnologias que transformam ideias em soluções impactantes,
                 sempre em busca de inovação e excelência
             </p>
             <div class="footer-icons">
@@ -346,6 +399,29 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         </div>
     </footer>
 
+    <script>
+        // Recupera os dados armazenados no localStorage
+        let criancasEncontradas = JSON.parse(localStorage.getItem('criancasEncontradas')) || [];
+    
+        // Se houver dados, preenche a tabela
+        if (criancasEncontradas.length > 0) {
+          const tabela = document.querySelector('#tabelaCrianças tbody');
+          criancasEncontradas.forEach(crianca => {
+            const novaLinha = tabela.insertRow();
+            novaLinha.insertCell(0).textContent = crianca.nomeCrianca;
+            novaLinha.insertCell(1).textContent = crianca.descricaoCrianca;
+            novaLinha.insertCell(2).textContent = crianca.ondeEncontrou;
+            novaLinha.insertCell(3).textContent = crianca.posto;
+          });
+        } else {
+          const tabela = document.querySelector('#tabelaCrianças tbody');
+          const novaLinha = tabela.insertRow();
+          const celulaVazia = novaLinha.insertCell(0);
+          celulaVazia.colSpan = 4;
+          celulaVazia.textContent = 'Nenhuma criança encontrada ainda.';
+        }
+      </script>
+    
 
     <script src="javascript/script.js"></script>
 </body>

@@ -43,6 +43,7 @@ section {
     align-items: center;
     justify-content: center;
     background-color: #b91111;
+    color:#fff;
     border-radius: 12px;
     padding: 10px 14px;
     font-weight: 600;
@@ -52,7 +53,7 @@ section {
 }
 
 .btn-default:hover {
-    background-color: #b91111;
+    background-color: var(--color-primary-3);;
 }
 
 .section-title {

@@ -74,3 +74,16 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
 });
 
 
+// Espera que a página seja carregada
+document.addEventListener("DOMContentLoaded", function() {
+  // Encontre o botão pelo ID
+  var loginButton = document.getElementById("loginButton");
+
+  // Adiciona um evento de clique
+  loginButton.addEventListener("click", function() {
+      window.location.href = "login_bombeiro.html";
+  });
+});
+
+
+

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Criança Encontrada</title>
+  <link rel="stylesheet" href="styles/crianças_achadas.css" />
+</head>
+<body>
+  <div class="container-wrapper">
+    <!-- Formulário -->
+    <div class="container">
+      <h1>Dados da Criança Encontrada</h1>
+      <form
+      id="formCadastroCriancaBombeiro"
+      action="http://localhost:3000/cadastro-crianca-encontrada"
+      method="POST"
+      onsubmit="exibirAlerta(event)"
+      >
+        <div class="form-group">
+          <label for="nomeCrianca">Nome da Criança:</label>
+          <input
+            type="text"
+            id="nomeCrianca"
+            name="nomeCrianca"
+            placeholder="Digite o nome da criança"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="descricaoCrianca">Descrição da Criança:</label>
+          <textarea
+            id="descricaoCrianca"
+            name="descricaoCria"
+            placeholder="Ex.: altura, cor da roupa, marca de nascença..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="ondeEncontrou">Onde Encontrou:</label>
+          <textarea
+            id="ondeEncontrou"
+            name="ondeEncontrou"
+            placeholder="Digite onde a criança foi encontrada"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="posto">Posto:</label>
+          <textarea
+            id="posto"
+            name="posto"
+            placeholder="Digite em qual posto a criança está"
+            required
+          ></textarea>
+        </div>
+
+        <div class="button">
+          <input type="submit" value="Cadastrar" />
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('formCadastroCriancaBombeiro').addEventListener('submit', function (event) {
+      event.preventDefault(); // Evita o envio do formulário
+
+      // Captura os valores dos campos
+      const nomeCrianca = document.getElementById('nomeCrianca').value.trim();
+      const descricaoCrianca = document.getElementById('descricaoCrianca').value.trim();
+      const ondeEncontrou = document.getElementById('ondeEncontrou').value.trim();
+      const posto = document.getElementById('posto').value.trim();
+
+      // Validação simples
+      if (!nomeCrianca || !descricaoCrianca || !ondeEncontrou || !posto) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Recupera os dados atuais do localStorage ou inicializa um array vazio
+      let criancasEncontradas = JSON.parse(localStorage.getItem('criancasEncontradas')) || [];
+
+      // Adiciona o novo dado
+      criancasEncontradas.push({ nomeCrianca, descricaoCrianca, ondeEncontrou, posto });
+
+      // Salva no localStorage
+      localStorage.setItem('criancasEncontradas', JSON.stringify(criancasEncontradas));
+
+      // Limpa o formulário
+      this.reset();
+
+      // Opcional: Alerta de sucesso
+      alert('Criança cadastrada com sucesso!');
+    });
+  </script>
+
+
+</body>
+</html>
