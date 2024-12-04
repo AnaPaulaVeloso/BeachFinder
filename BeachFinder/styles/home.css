@@ -61,11 +61,6 @@
     box-shadow: none;
 }
 
-#clique-aqui{
-    
-}
-
-
 @media screen and (max-width: 450px) {
     #cta .title {
         font-size: 2rem; /* Ajusta o tamanho do título para telas menores */
