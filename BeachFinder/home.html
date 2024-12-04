@@ -1,76 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="styles/style.css">
-<link rel="stylesheet" href="styles/style.css">
-<title>Home Page</title>
-
-<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Início</title>    
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-<head>
-
-<body>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-    }
-    .container {
-        margin-bottom: 30px;
+    <style>
+        .container {
+            margin-bottom: 30px;
+            }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    th, td {
-        border: 1px solid #ccc;
-        padding: 10px;
-        text-align: left;
-    }
-    th {
-        background-color: #f4f4f4;
-    }
-</style>
-    <header>
-        <nav id="navbar">
-            <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
-            <!-- </a> -->
-            <ul id="nav_list">
-                <li class="nav-item active">
-                    <a href="#home">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#posto">Posto</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#orientações">Orientações</a>
-                </li>
-            </ul>
-
-            <div id="cta_buttons">
-                <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
-                    Entrar
-                </button>
-            </div>
-            </div>
-
-            <button id="mobile_btn">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </nav>
-
-        <div id="mobile_menu">
-            <ul id="mobile_nav_lis"></ul>
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const mobileBtn = document.getElementById("mobile_btn");
+            const mobileMenu = document.getElementById("mobile_menu");
+    
+            mobileBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("active");
+            });
+        });
+    </script>    
+</head>
+<body>
+<header>
+    <nav id="navbar">
+        <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
+        <ul id="nav_list">
             <li class="nav-item active">
                 <a href="#home">Início</a>
             </li>
@@ -78,12 +56,39 @@
                 <a href="#posto">Posto</a>
             </li>
             <li class="nav-item">
-                <a href="#orien">Orientações</a>
+                <a href="#orientações">Orientações</a>
             </li>
-            </ul>
+        </ul>
 
+        <div id="cta_buttons">
+            <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
+                Entrar
+            </button>
         </div>
-    </header>
+
+        <button id="mobile_btn">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </nav>
+
+    <div id="mobile_menu">
+        <ul id="mobile_nav_list">
+            <li class="nav-item active">
+                <a href="#home">Início</a>
+            </li>
+            <li class="nav-item">
+                <a href="#posto">Posto</a>
+            </li>
+            <li class="nav-item">
+                <a href="#orientações">Orientações</a>
+            </li>
+        </ul>
+        <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
+            Entrar
+        </button>
+    </div>
+</header>
+
 
     <main id="content">
         <section id="home">
@@ -103,18 +108,19 @@
                         Ver Postos
                     </a>
                 
-<a href="tel:+55555555555" id="phone_button" style="color: black">
+                    <a href="tel:+55555555555" id="phone_button" style="color: black">
                         <button class="btn-default">
                             <i class="fa-solid fa-phone"></i>
                         </button>
-                        (13) 3494-3090
+                        (13) 3494-3090 
                     </a>
                 
+                </div>
+            </br>
+                <h1>Crianças Localizadas no Postos</h1>    
                 
-                    
-                <div class="container">
-                    <h1>Crianças Encontradas</h1>
-                    <table id="tabelaCrianças">
+                <div id="container">                    
+                    <table class="localizadas" id="tabelaCrianças">
                       <thead>
                         <tr>
                           <th>Nome</th>
@@ -127,34 +133,34 @@
                         <!-- Os dados serão inseridos aqui via JavaScript -->
                       </tbody>
                     </table>
-                  </div>
+                </div>
 
 
         </section>
         <section id="posto">
             <h2 class="section-title">Postos de Praia Grande</h2>
-
             <div id="dishes">
                 <div class="dish">
                     <div class="dish-location">
                     </div>
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.4691532832903!2d-46.409930119502505!3d-24.014515723031874!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1da6aff95fab%3A0x4252588611f610e2!2sAv.%20Pres.%20Castelo%20Branco%2C%20550%20-%20Canto%20do%20Forte%2C%20Praia%20Grande%20-%20SP%2C%2011700-800!5e0!3m2!1spt-BR!2sbr!4v1733293667278!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </iframe>
                     <h3 class="dish-title">
                         Canto do Forte
                     </h3>
-
+                    
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 551
+                        Av. Castelo Branco, 551
                     </span>
                     <div class="dish-posto">
-                        <h4>Posto 1</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <h4>Posto 3</h4>
+                        <a href="https://maps.app.goo.gl/rPtyfGr1NEkC2jAr6" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -163,21 +169,22 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.4715548897234!2d-46.42824292478049!3d-24.014430978491177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1dcec68b79f7%3A0xe3f6b47e466174b1!2sAv.%20Pres.%20Castelo%20Branco%2C%202634%20-%20Guilhermina%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733293573934!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
                         Guilhermina
                     </h3>
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 2641
+                        Av. Castelo Branco, 2641
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 3</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/jVmjSSzyj6JeiQod9" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -186,22 +193,22 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.3846103074384!2d-46.44006562478049!3d-24.01749877848915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1dd67a01a18d%3A0x3b35451da700d5d2!2sAv.%20Pres.%20Castelo%20Branco%2C%20185%20-%20Avia%C3%A7%C3%A3o%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733293467829!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <h3 class="dish-title">
                         Aviação
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 3901
+                        Av. Castelo Branco, 3901
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 4</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/J4teNMGpFPAJSjkE9" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -210,22 +217,23 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.2358183903743!2d-46.458019224780266!3d-24.022747978485555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1e613b07c195%3A0x6a60a69f28144362!2sAv.%20Pres.%20Castelo%20Branco%2C%205776%20-%20Guilhermina%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733293263105!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
                         Tupi
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 5775
+                        Av. Castelo Branco, 5775
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 5</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/7m9QAfvuj6e9nCgw8" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -234,23 +242,23 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d911.0163224280847!2d-46.47265403042142!3d-24.028762698655104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1e56b811a405%3A0x4abf2e6d28619101!2sAv.%20Pres.%20Castelo%20Branco%2C%203925%20-%20Cidade%20Ocian%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733292889054!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
                         Ocian
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 7557
+                        Av. Castelo Branco, 7557
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 7</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/1bitfih5cYmY57987" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -259,22 +267,22 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d910.9639255370322!2d-46.49150845066463!3d-24.03615312611922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1fa6a63c1eff%3A0xe742a7b2ad9056e1!2sAv.%20Pres.%20Castelo%20Branco%2C%20200%20-%20Guilhermina%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733292774858!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     <h3 class="dish-title">
                         Mirim
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 9661
+                        Av. Castelo Branco, 9661
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 9</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/yjZZWg3tktpoVq4S8" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -283,22 +291,23 @@
                     </div>
 
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3643.4378493498357!2d-46.52744592477927!3d-24.050880978466576!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce202fc902a405%3A0x5941084cb8419992!2sAv.%20Pres.%20Castelo%20Branco%2C%2013291%20-%20Guilhermina%2C%20Praia%20Grande%20-%20SP%2C%2011702-200!5e0!3m2!1spt-BR!2sbr!4v1733289854645!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
                         Caiçara
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 13291
+                        Av. Castelo Branco, 13291
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 11</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/uyP6UaQRezK2Yw64A" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
 
@@ -306,23 +315,23 @@
                     <div class="dish-location">
                     </div>
 
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d14566.690818775476!2d-46.6415725!3d-24.1130028!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v1731376144371!5m2!1spt-BR!2sbr"
-                        style="border-radius: 10px;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d910.7184486299238!2d-46.56892283042129!3d-24.07074849865334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce20eed110fd41%3A0x50ff0bd9f5e0550b!2sPosto%20de%20Bombeiros!5e0!3m2!1spt-BR!2sbr!4v1733291770990!5m2!1spt-BR!2sbr" 
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                     <h3 class="dish-title">
                         Balneário Flórida
                     </h3>
 
                     <span class="dish-description">
-                        Av. Presidente Kennedy, 17291
+                        Av. Castelo Branco, 17910
                     </span>
                     <div class="dish-posto">
                         <h4>Posto 14</h4>
-                        <button class="btn-default">
-                            <i class="fa-solid fa-magnifying-glass"></i>
-                        </button>
+                        <a href="https://maps.app.goo.gl/FdrGL8ddgPov3sJo6" target="_blank">
+                            <button class="btn-default">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -363,12 +372,11 @@
             <h3>SOS<span>Kids</span></h3>
 
             <p class="footer-links">
-                <a href="#">Início</a>
+                <a href="#home">Início</a>
                 |
-                <a href="#">Postos</a>
+                <a href="#postos">Postos</a>
                 |
-                <a href="#">Orientações</a>
-
+                <a href="#orientações">Orientações</a>
             </p>
 
             <p class="footer-company-name">Copyright © 2024 <strong>SOSKids</strong> Todos os direitos reservados</p>

@@ -4,6 +4,7 @@
 @import url('posto.css');
 @import url('orientacoes.css');
 @import url('footer.css');
+@import url('lista_criancas.css');
 
 :root {
     --color-primary-1: #f2f2f2;

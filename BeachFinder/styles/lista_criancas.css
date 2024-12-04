@@ -1,0 +1,13 @@
+#container {
+    width: 100%;
+    aspect-ratio: 3/2;
+    margin: auto;
+    overflow-x: auto;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+table.localizadas {
+    table-layout: auto;
+    width: 100%;       
+}
