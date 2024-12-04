@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Bombeiros</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <style>
+    .card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .card img {
+      border-radius: 8px;
+      width: 100%;
+      height: auto;
+    }
+
+    .card h2 {
+      font-size: 1.2rem;
+      margin: 10px 0;
+    }
+
+    .card p {
+      font-size: 1rem;
+      margin: 5px 0;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+    
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav id="navbar">
+      <i class="fa-sharp fa-solid fa-location-dot" id="nav_logo">SOS KIDS</i>
+      <button class="btn-default" onclick="logout()">Sair</button>
+    </nav>
+  </header>
+  <main>
+    <h2>Crianças Desaparecidas Cadastradas</h2>
+    <div id="tabelaCrianca" class="cards-container">
+      <!-- Os cards serão gerados aqui -->
+    </div>
+  </main>
+
+  <script>
+    // Função para carregar os dados das crianças desaparecidas
+    async function carregarCrianças() {
+      try {
+        const response = await fetch('http://localhost:3000/criancas-desaparecidas');
+        if (!response.ok) throw new Error('Erro ao carregar os dados');
+
+        const criancas = await response.json();
+        const container = document.getElementById('tabelaCrianca');
+
+        // Cria um card para cada criança
+        criancas.forEach((crianca) => {
+          const card = document.createElement('div');
+          card.classList.add('card');
+          card.innerHTML = `
+            <h2>${crianca.nome_crianca}</h2>
+            <p><strong>Responsável:</strong> ${crianca.nome_responsavel}</p>
+            <p><strong>Telefone:</strong> ${crianca.telefone_responsavel}</p>
+            <p><strong>Descrição:</strong> ${crianca.descricao}</p>
+            ${
+              crianca.foto
+                ? `<img src="http://localhost:3000/uploads/${criança.foto}" alt="Foto da Criança" />`
+                : '<p><strong>Foto não disponível</strong></p>'
+            }
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error('Erro ao carregar crianças:', error);
+        alert('Erro ao carregar crianças desaparecidas.');
+      }
+    }
+
+    // Função de logout (opcional)
+    function logout() {
+      alert('Sessão encerrada.');
+      window.location.href = 'login_bombeiro.html'; 
+    }
+
+    // Chama a função ao carregar a página
+    window.onload = carregarCrianças;
+  </script>
+</body>
+</html>

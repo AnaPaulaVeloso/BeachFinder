@@ -5,6 +5,7 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import multer from 'multer'; // Importando o multer para o upload de arquivos
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,20 +14,31 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
-
-
 
 app.use(
   cors({
-    origin: 'http://127.0.0.1:5500', 
-    methods: ['GET', 'POST'], // Métodos permitidos
+    origin: 'http://127.0.0.1:5500',
+    methods: ['GET', 'POST'],
   })
 );
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Configuração do multer para salvar a foto
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'uploads/'); // Diretório para armazenar as fotos
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Nome único para o arquivo
+  },
+});
+
+const upload = multer({ storage });
+
+// Inicializar o banco de dados
 const initDB = async () => {
   const db = await open({
     filename: './banco.db',
@@ -106,6 +118,7 @@ app.post('/cadastro-bombeiro', async (req, res) => {
   }
 });
 
+// Endpoint de login
 app.post('/login', async (req, res) => {
   try {
     const { email, senha } = req.body;
@@ -132,8 +145,6 @@ app.post('/login', async (req, res) => {
     res.status(500).send('Erro ao realizar login.');
   }
 });
-
-
 
 // Endpoint para cadastrar crianças encontradas
 app.post('/cadastro-crianca-encontrada', async (req, res) => {
@@ -163,6 +174,33 @@ app.post('/cadastro-crianca-encontrada', async (req, res) => {
   }
 });
 
+// Endpoint para cadastrar criança desaparecida com foto
+app.post('/cadastro-crianca-desaparecida', upload.single('foto'), async (req, res) => {
+  try {
+    const { nome_crianca, nome_responsavel, telefone_responsavel, descricao } = req.body;
+    const foto = req.file ? req.file.filename : null; // Se a foto foi enviada
+
+    if (!nome_crianca || !nome_responsavel || !telefone_responsavel || !descricao) {
+      return res.status(400).send('Todos os campos são obrigatórios.');
+    }
+
+    const db = await open({
+      filename: './banco.db',
+      driver: sqlite3.Database,
+    });
+
+    // Inserção no banco de dados
+    await db.run(
+      'INSERT INTO crianças_desaparecidas (nome_crianca, nome_responsavel, telefone_responsavel, descricao, foto) VALUES (?, ?, ?, ?, ?)',
+      [nome_crianca, nome_responsavel, telefone_responsavel, descricao, foto]
+    );
+
+    res.status(201).send('Cadastro de criança desaparecida realizado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao cadastrar criança desaparecida:', error);
+    res.status(500).send('Erro ao cadastrar criança desaparecida.');
+  }
+});
 
 // Inicializar servidor
 const PORT = 3000;
