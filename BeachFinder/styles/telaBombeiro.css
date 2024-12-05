@@ -116,3 +116,10 @@ h2 {
   vertical-align: top;
   text-align: left;
 }
+.foto-crianca {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Ajusta a imagem sem distorção */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}

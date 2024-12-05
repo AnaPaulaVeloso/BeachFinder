@@ -17,6 +17,8 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 app.use(
   cors({
     origin: 'http://127.0.0.1:5500',
@@ -219,7 +221,6 @@ app.get('/criancas-desaparecidas', async (req, res) => {
     res.status(500).send('Erro ao listar crianças desaparecidas.');
   }
 });
-
 
 // Inicializar servidor
 const PORT = 3000;

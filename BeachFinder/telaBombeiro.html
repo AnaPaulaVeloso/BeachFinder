@@ -4,8 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tela Bombeiros</title>
-  <link rel="stylesheet" href="styles/telaBombeiro.css">
+  <link rel="stylesheet" href="styles/telaBombeiro.css">  
+  <link rel="stylesheet" href="styles/style.css">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+  <style>
+    .container {
+        margin-bottom: 30px;
+        }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+</style>
 </head>
 <body>
   <header>
@@ -15,54 +35,61 @@
         
         <!-- Botão de Sair -->
         <div id="cta_buttons">
-            <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
-                Sair
+            <button class="btn-default" onclick="window.location.href='form_crianças_achadas.html';">
+                Cadastrar Criança
             </button>
+            <button class="btn-default" onclick="window.location.href='login_bombeiro.html';">
+              Sair
+          </button>
         </div>
     </nav>
   </header>
 
   <main>
     <h2>Crianças Desaparecidas</h2>
-    <div id="tabelaCrianca" class="cards-container">
-      <!-- Os cards serão gerados aqui -->
-    </div>
+    </br>
+    <div id="container">                    
+      <table class="localizadas" id="tabelaCrianças">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Nome Responsável</th>
+            <th>Telefone</th>
+            <th>Descrição</th>
+            <th>Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Os dados serão inseridos aqui via JavaScript -->
+        </tbody>
+      </table>
+  </div>
   </main>
 
   <script>
-    // Função para carregar os dados das crianças desaparecidas
-    async function carregarCrianças() {
-      try {
-        const response = await fetch('http://localhost:3000/criancas-desaparecidas');
-        if (!response.ok) throw new Error('Erro ao carregar os dados');
+    // Recupera os dados armazenados no localStorage
+    let criancasDesaparecida = JSON.parse(localStorage.getItem('criancas')) || [];
 
-        const criancas = await response.json();
-        const container = document.getElementById('tabelaCrianca');
-
-        // Cria um card para cada criança
-        criancas.forEach((crianca) => {
-          const card = document.createElement('div');
-          card.classList.add('card');
-          card.innerHTML = `
-            <h2>${crianca.nome_crianca}</h2>
-            <p><strong>Responsável:</strong> ${crianca.nome_responsavel}</p>
-            <p><strong>Telefone:</strong> ${crianca.telefone_responsavel}</p>
-            <p><strong>Descrição:</strong> ${crianca.descricao}</p>
-            ${crianca.foto 
-              ? `<img src="http://localhost:3000/uploads/${crianca.foto}" alt="Foto da Criança" class="foto-crianca" />` 
-              : '<p><strong>Foto não disponível</strong></p>'}
-          `;
-          container.appendChild(card);
-        });
-
-      } catch (error) {
-        console.error('Erro ao carregar crianças:', error);
-        alert('Erro ao carregar crianças desaparecidas.');
-      }
+    // Se houver dados, preenche a tabela
+    if (criancasDesaparecidas.length > 0) {
+      const tabela = document.querySelector('#tabelaCrianças tbody');
+      criancasDesaparecidas.forEach(crianca => {
+        const novaLinha = tabela.insertRow();
+        novaLinha.insertCell(0).textContent = crianca.nomeCrianca;
+        novaLinha.insertCell(1).textContent = crianca.nomeResponsavel;
+        novaLinha.insertCell(2).textContent = crianca.telefoneResponsavel;
+        novaLinha.insertCell(0).textContent = crianca.descricaoCriança;
+        novaLinha.insertCell(3).textContent = crianca.fotoCrianca;
+      });
+    } else {
+      const tabela = document.querySelector('#tabelaCrianças tbody');
+      const novaLinha = tabela.insertRow();
+      const celulaVazia = novaLinha.insertCell(0);
+      celulaVazia.colSpan = 4;
+      celulaVazia.textContent = 'Nenhuma criança encontrada ainda.';
     }
-
-    // Chama a função ao carregar a página
-    window.onload = carregarCrianças;
   </script>
+  
+
 </body>
 </html>
